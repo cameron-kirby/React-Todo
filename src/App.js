@@ -1,9 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
+import styled from 'styled-components'
 
 // Components
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm'
+
+// Styles
+import "./components/Todo.css";
+
+const StyledApp = styled.div`
+  height: 100vh;
+  margin: 0;
+  background-color: #FFFCF2;
+
+  h1 { 
+    margin: 0;
+    padding-top: 2%;
+    text-align: center;
+    color: #252422;
+  }
+`
 
 const todoListInit = [
   {
@@ -71,17 +88,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='App'>
+      <StyledApp>
         <header>
-          <h2>Welcome to your Todo App!</h2>
+          <h1>Todo Application</h1>
         </header>
         <TodoList
           toggleCompleted={this.toggleCompleted}
-          clearCompleted={this.clearCompleted}
           todoList={this.state.todoList}
         />
-        <TodoForm addTodo={this.addTodo} />
-      </div>
+        <TodoForm addTodo={this.addTodo} clearCompleted={this.clearCompleted}/>
+      </StyledApp>
     );
   }
 }
